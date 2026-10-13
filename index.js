@@ -6,11 +6,9 @@
 **elevados** que sea el resultado de elevar cada número a si mismo. */
 
 const numbers = [4, 5, 6, 7, 8, 9, 10];
-
 function elevados() {
     return numbers.map((num) => num ** num);
 };
-
 console.log(elevados());
 
 //2.- Dado el array **foodList** con valor ['Pizza', 'Ramen', 'Paella', 'Entrecot'], generar un segundo array que consiga generar de salida el resultado esperado.
@@ -25,7 +23,6 @@ const result2 = foodList.map((comida, i) => {
         return `Aunque no como carne, el ${comida} es sabroso`;
     }
 });
-
 console.log(result2);
 
 
@@ -58,7 +55,6 @@ const staff = [
 const result3 = staff.map((persona, i) => {
         return `${persona.name} es ${persona.role} y le gusta ${persona.hobbies[0]} y ${persona.hobbies[1]}`;
 });
-
 console.log(result3);
 
 
@@ -80,9 +76,7 @@ console.log(result3);
 //4.- Crea un segundo array result4 a partir del array numbers2 que devuelva solo los impares
 
 const numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; 
-
 const result4 = numbers2.filter((num) => num % 2 !== 0);
-
 console.log(result4);
 
 
@@ -90,8 +84,6 @@ console.log(result4);
 
 ['Que rico Tempeh me voy a comer!',
 'Que rica Tofu burguer me voy a comer!'] 
-
-
 
 const foodList2 =[
 {
@@ -111,11 +103,19 @@ const foodList2 =[
   isVeggie: false
 }]; 
 
+const result5 = foodList2
+  .filter((plato) => plato.isVeggie)
+  .map((plato) => {
+    if (plato.name.includes('burguer')) {
+      return `Que rica ${plato.name} me voy a comer!`;
+    } else {
+      return `Que rico ${plato.name} me voy a comer!`;
+    }
+  });
 
+console.log(result5);
 
-/* 6.- Dado el array **inventory**, devolver un array con los nombres de los elementos que valgan más de 300 euros.
-
-
+//6.- Dado el array **inventory**, devolver un array con los nombres de los elementos que valgan más de 300 euros.
 
 const inventory = [
   {
@@ -136,24 +136,33 @@ const inventory = [
   }
 ];
 
-/*
+///Resultado esperado:
   [
     'TV Samsung',
     'Viaje a Cancún'
   ]
-*/
 
+const result6 = inventory
+ .filter((item) => item.price > 300)
+ .map((item) => item.name);
+
+console.log(result6);
 
 ///// REDUCE //////
 
-/// 7.- Dado el siguiente array **numeros** [39, 2, 4, 25, 62], obten la multiplicación de todos los elementos del array 
+//7.- Dado el siguiente array **numeros** [39, 2, 4, 25, 62], obten la multiplicación de todos los elementos del array 
 
-/* 8.- Concatena todos los elementos del array con reduce para que devuelva una sola frase
+const numeros3 = [39, 2, 4, 25, 62];
+const result7 = numeros3.reduce((acc, num) => acc * num);
+console.log(result7);
+
+
+// 8.- Concatena todos los elementos del array con reduce para que devuelva una sola frase
 
 const sentenceElements = [
   'Me',
   'llamo',
-   (Tu nombre aqui!!!)
+  'Leonardo',
   'y',
   'quiero',
   'sentir',
@@ -163,11 +172,12 @@ const sentenceElements = [
   'javascript'
 ];
 
-// Resultado--> 'Me llamo XX y quiero sentir la fuerza con javascript' /*
+const result8 = sentenceElements.reduce((acc, element) => `${acc} ${element}`);
+
+console.log(result8);
 
 
-
-/* 9.- Obtener el monto total de los elementos que pertenecen a category "code" en el siguiente array.
+// 9.- Obtener el monto total de los elementos que pertenecen a category "code" en el siguiente array.
 
 const books = [
   {
@@ -195,5 +205,10 @@ const books = [
     category: 'code'
   }
 ];
-// Resultado --> 60 */
+// Resultado --> 60 
 
+const result9 = books
+ .filter((libro) => libro.category === 'code')
+ .reduce((acc, libro) => acc + libro.price, 0);
+
+console.log(result9);
